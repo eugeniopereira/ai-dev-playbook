@@ -1,0 +1,37 @@
+{
+  "IA Plan": {
+    "prefix": "ia-plan",
+    "body": [
+      "Seja um dev fullstack senior.",
+      "",
+      "Contexto:",
+      "${1}",
+      "",
+      "Tarefa:",
+      "${2}",
+      "",
+      "Logs:",
+      "$TM_SELECTED_TEXT",
+      "",
+      "Objetivo:",
+      "1. Quebrar em passos",
+      "2. Identar dependências",
+      "3. Identificar riscos",
+      "4. Estimar esforço"
+    ]
+  },
+  "IA Refine": {
+    "prefix": "ia-refine",
+    "body": [
+      "Revise o plano:",
+      "$TM_SELECTED_TEXT"
+    ]
+  },
+  "IA Execute": {
+    "prefix": "ia-exec",
+    "body": [
+      "Implemente:",
+      "$TM_SELECTED_TEXT"
+    ]
+  }
+}
