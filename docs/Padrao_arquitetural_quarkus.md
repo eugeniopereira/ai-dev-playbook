@@ -1,6 +1,6 @@
 # Padrão Arquitetural Quarkus
 
-** Objetivo **
+**Objetivo**
 
 Este documento define o padrão arquitetural oficial para modernização incremental de sistemas legados utilizando:
 
@@ -113,17 +113,17 @@ Legado / Banco / Sistemas externos
 
 ## 3. Stack Oficial Backend
 
-** Linguagem **
+**Linguagem**
 - Java 17
 
 ---
 
-** Framework **
+**Framework**
 - Quarkus
 
 ---
 
-** Configuração JVM Obrigatória **
+**Configuração JVM Obrigatória**
 
 ```
 <compiler-plugin.version>3.11.0</compiler-plugin.version>
@@ -132,12 +132,12 @@ Legado / Banco / Sistemas externos
 
 ---
 
-** REST **
+**REST**
 - RESTEasy Reactive
 
 ---
 
-** Segurança **
+**Segurança**
 
 - JWT
 - OAuth2
@@ -146,21 +146,21 @@ Legado / Banco / Sistemas externos
 
 ---
 
-** Banco **
+**Banco**
 MariaDB
 Hibernate ORM Panache
 Flyway
 
 ---
 
-** Observabilidade **
+**Observabilidade**
 - OpenTelemetry
 - Micrometer
 - Prometheus
 
 ---
 
-** Mensageria **
+**Mensageria**
 
 - RabbitMQ
 
@@ -233,7 +233,7 @@ Flyway
 
 ## 6. Dependências Oficiais Quarkus
 
-** REST **
+**REST**
 
 ```
 <dependency>
@@ -249,7 +249,7 @@ Flyway
 
 ---
 
-** Segurança **
+**Segurança**
 
 ```
 <dependency>
@@ -265,7 +265,7 @@ Flyway
 
 ---
 
-** OpenAPI **
+**OpenAPI**
 
 ```
 <dependency>
@@ -276,7 +276,7 @@ Flyway
 
 ---
 
-** Observabilidade **
+**Observabilidade**
 
 ```
 <dependency>
@@ -292,7 +292,7 @@ Flyway
 
 ---
 
-** Banco **
+**Banco**
 
 ```
 <dependency>
@@ -308,7 +308,7 @@ Flyway
 
 ---
 
-** Health Checks **
+**Health Checks**
 
 ```
 <dependency>
@@ -482,7 +482,7 @@ Toda esteira CI/CD deve possuir:
 
 ### Ferramentas obrigatórias GitLab CI/CD
 
-** Qualidade **
+**Qualidade**
 
 - SonarQube
 - Checkstyle
@@ -491,7 +491,7 @@ Toda esteira CI/CD deve possuir:
 
 ---
 
-** Segurança **
+**Segurança**
 
 - Trivy
 - OWASP Dependency Check
@@ -499,7 +499,7 @@ Toda esteira CI/CD deve possuir:
 
 ---
 
-** Regras obrigatórias **
+**Regras obrigatórias**
 
 Pipeline deve falhar quando:
 
@@ -530,7 +530,7 @@ Formato obrigatório:
 
 ## 15. Contratos de API
 
-** Erros **
+**Erros**
 
 ```
 {
@@ -559,7 +559,7 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
 
 ## 17. Regras Arquiteturais Obrigatórias
 
-** Nunca: **
+**Nunca:**
 
 - colocar regra de negócio nos resources REST
 - acessar banco diretamente pelos endpoints
@@ -570,7 +570,7 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
 
 ---
 
-** Sempre: **
+**Sempre:**
 
 - utilizar DTOs
 - utilizar adapters
@@ -631,32 +631,32 @@ Nunca:
 
 ## 19. Estratégia Oficial de Modernização
 
-** Fase 1 **
+**Fase 1**
 Encapsular legado.
 
 ---
 
-** Fase 2 **
+**Fase 2**
 Criar APIs intermediárias.
 
 ---
 
-** Fase 3 **
+**Fase 3**
 Introduzir observabilidade.
 
 ---
 
-** Fase 4 **
+**Fase 4**
 Extrair domínio gradualmente.
 
 ---
 
-** Fase 5 **
+**Fase 5**
 Migrar integrações.
 
 ---
 
-** Fase 6 **
+**Fase 6**
 Desativar módulos legados.
 
 ---
