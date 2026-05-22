@@ -1,6 +1,6 @@
 # Padrão Arquitetural Python
 
-** Objetivo **
+**Objetivo**
 
 Este documento define o padrão arquitetural oficial para modernização incremental de sistemas legados utilizando:
 
@@ -106,54 +106,54 @@ Legado / Banco / IA / Sistemas externos
 
 ### 3.1 Backend
 
-** Linguagem **
+**Linguagem**
 
 - Python 3.12+
 
-** Framework **
+**Framework**
 
 - FastAPI
 
-** Servidor ASGI **
+**Servidor ASGI**
 
 - Granian
 ou
 - Uvicorn
 
-** Validação **
+**Validação**
 
 - Pydantic v2
 
-** Autenticação **
+**Autenticação**
 
 - JWT
 - Keycloak
 - OAuth2/OpenID Connect
 
-** Observabilidade **
+**Observabilidade**
 
 - OpenTelemetry
 - Prometheus
 - Structlog
 
-** Banco **
+**Banco**
 
 - MySQL
 - SQLAlchemy
 - Alembic
 
-** Mensageria **
+**Mensageria**
 RabbitMQ
 
 ---
 
 ### 3.2 Frontend
 
-** Framework oficial **
+**Framework oficial**
 
 - Next.js
 
-** Objetivo **
+**Objetivo**
 
 - BFF
 - SSR
@@ -161,13 +161,13 @@ RabbitMQ
 - Proxy de APIs
 - Sessão segura
 
-** Autenticação **
+**Autenticação**
 
 - NextAuth.js
 ou
 - integração direta Keycloak OIDC
 
-** UI **
+**UI**
 
 - React
 - Tailwind
@@ -303,14 +303,14 @@ ou
 ## 7. Bibliotecas Oficiais Frontend
 
 ```
-- next
-- react
-- react-dom
-- next-auth
-- keycloak-js
-- axios
-- zod
-- react-hook-form
+next
+react
+react-dom
+next-auth
+keycloak-js
+axios
+zod
+react-hook-form
 ```
 
 ---
@@ -492,7 +492,7 @@ Formato obrigatório:
 
 Padrão obrigatório:
 
-** Erros **
+**Erros**
 ```
 {
   "code": "DOCUMENT_NOT_FOUND",
@@ -517,7 +517,7 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
 
 ## 17. Regras Arquiteturais Obrigatórias
 
-** Nunca: **
+**Nunca:**
 
 - colocar regra de negócio em controllers
 - acessar banco diretamente pela rota
@@ -527,7 +527,7 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
 - integrar diretamente ao legado
 - ignorar contratos OpenAPI
 
-** Sempre: **
+**Sempre:**
 
 - utilizar DTOs
 - utilizar adapters
@@ -586,32 +586,32 @@ Nunca:
 
 ## 19. Estratégia Oficial de Modernização
 
-** Fase 1 **
+**Fase 1**
 Encapsular legado.
 
 ---
 
-** Fase 2 **
+**Fase 2**
 Introduzir APIs intermediárias.
 
 ---
 
-** Fase 3 **
+**Fase 3**
 Adicionar observabilidade.
 
 ---
 
-** Fase 4 **
+**Fase 4**
 Extrair domínio gradualmente.
 
 ---
 
-** Fase 5 **
+**Fase 5**
 Migrar integrações.
 
 ---
 
-** Fase 6 **
+**Fase 6**
 Desativar módulos legados.
 
 ---
