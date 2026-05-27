@@ -79,6 +79,9 @@ Exemplos:
 [body opcional - detalhes adicionais se necessário]
 [body opcional - múltiplas linhas se mudanças complexas]
 
+Gerado com assistência de: <Claude/Copilot/Gemini/etc>
+Validação: <security scan status, peer reviews>
+
 [ISSUE-CODE se extraído da branch]
 Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ```
@@ -97,6 +100,10 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 - Deixe linha em branco antes do footer
 
 **Regras para o footer**:
+- **IMPORTANTE**: Se código foi gerado/assistido por IA, inclua linha:
+  `Gerado com assistência de: [Claude/Copilot/Gemini]`
+- **IMPORTANTE**: Inclua status de validação:
+  `Validação: Security scan passed, 2 peer reviews`
 - Sempre inclua `Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>`
 - Se branch tem código de issue (ex: DANFEAI-164), inclua antes do Co-Authored-By
 - Formato do issue: `[ISSUE-CODE]` ou `Refs: ISSUE-CODE`
@@ -106,6 +113,9 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 **Exemplo 1 - Feature simples**:
 ```
 feat(api): adiciona endpoint para gerar URLs assinadas em lote
+
+Gerado com assistência de: Claude Code
+Validação: Security scan passed, 2 peer reviews
 
 DANFEAI-123
 Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
@@ -120,6 +130,9 @@ OVERLOAD_RETRY_SECONDS para permitir customização das mensagens
 de sobrecarga sem precisar alterar código.
 
 Remove cálculo dinâmico de retry que não era mais utilizado.
+
+Gerado com assistência de: Claude Code
+Validação: Security scan passed, SonarQube quality gate OK, 2 peer reviews
 
 DANFEAI-164
 Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
