@@ -28,7 +28,7 @@ Mapear a arquitetura técnica do sistema legado.
 ```markdown
 Você é um arquiteto de software especializado em análise de sistemas legados.
 
-Analise este projeto e gere um documento `architecture-context.md` seguindo a estrutura:
+Analise este projeto e gere um documento `architecture-context.md` na pasta docs seguindo a estrutura:
 
 # Architecture Context
 
@@ -126,8 +126,8 @@ Descobrir comportamento funcional e regras de negócio.
 ```markdown
 Você é um analista de negócio especializado em engenharia reversa funcional.
 
-Usando o `architecture-context.md` gerado anteriormente e o código-fonte, 
-gere um documento `functional-map.md` seguindo a estrutura:
+Usando o `architecture-context.md` da pasta docs gerado anteriormente e o código-fonte, 
+gere um documento `functional-map.md` na pasta docs seguindo a estrutura:
 
 # Functional Map
 
@@ -232,17 +232,69 @@ Transformar descoberta em backlog executável.
 ### Prompt Pronto
 
 ```markdown
-Você é um Product Owner técnico especializado em modernização de sistemas legados.
+Você é um Product Owner técnico especializado em modernização de sistemas legados para arquiteturas cloud-native.
 
-Usando `architecture-context.md` e `functional-map.md`, 
-gere um documento `modernization-backlog.md` seguindo a estrutura:
+Usando `architecture-context.md` e `functional-map.md` da pasta docs, 
+gere um documento `modernization-backlog.md` na pasta docs seguindo a estrutura:
 
 # Modernization Backlog
 
+## Premissas
+
+**Desenvolvimento Assistido por IA**: O projeto será desenvolvido usando ferramentas de IA (Claude Code, GitHub Copilot ou similar) para planejamento e implementação.
+
+**Impactos nas Estimativas**:
+- Redução de 30-50% na duração estimada (especialmente em boilerplate, testes, documentação)
+- Redução de ~40% nos story points totais (ex: 800-1000 SP → 500-700 SP)
+- Complexidades ajustadas: muitas histórias L→M, XL→L devido à IA
+
+**Considerar no Backlog**:
+- Incluir seção dedicada "Impacto do Desenvolvimento Assistido por IA" no Executive Summary
+- Adicionar riscos específicos de IA: alucinações, débito técnico oculto, over-reliance
+- Incluir mitigações: code review obrigatório, quality gates (SonarQube, OWASP), validação manual de segurança
+- Ajustar team composition: mencionar "desenvolvimento assistido por IA"
+- Nas histórias complexas, indicar onde IA pode gerar código/testes com notas "(IA gera)", "(IA implementa)"
+
 ## Executive Summary
+- Visão de estado futuro (arquitetura alvo)
 - Principais iniciativas
 - Esforço estimado (alto nível)
 - Riscos principais
+
+## Current vs Target Architecture
+
+### Current State
+Resuma o estado atual do sistema baseado em `architecture-context.md`:
+- Stack tecnológico atual
+- Tipo de aplicação (monólito modular, microserviços, etc.)
+- Deployment atual
+- Principais integrações
+
+### Target State
+
+**Stack Tecnológico Alvo**:
+- **Backend**: Quarkus 3.8.1 + JVM OpenJDK 17 (LTS até 2029)
+- **Frontend**: Next.js 14+ (App Router com Server Actions como BFF)
+- **Database**: MariaDB (última versão estável)
+- **Cache**: Redis 7.x (se aplicável - avaliar necessidade)
+- **Messaging**: RabbitMQ 3.x (se aplicável - avaliar necessidade)
+- **Deployment**: OpenShift 4.x
+- **CI/CD**: GitLab CI
+- **Observabilidade**: OpenShift Monitoring (Prometheus + Grafana) + Jaeger
+
+**Arquitetura Alvo**:
+- Backend: Quarkus REST API (Modular Monolith ou Microserviços conforme bounded contexts)
+- Frontend 1: Next.js (portal cidadão) - Server Actions chamam API Quarkus
+- Frontend 2: Next.js (backoffice administrativo) - Server Actions chamam API Quarkus
+- Persistência: MariaDB (principal), Redis (cache - se necessário)
+- Mensageria: RabbitMQ (eventos assíncronos - se necessário)
+- API Gateway: Kong ou Red Hat 3scale (roteamento legado vs moderno durante transição)
+
+**Por que este stack**:
+- **Quarkus**: Startup rápido (10x), consumo memória 70% menor, cloud-native
+- **Next.js**: SSR/SSG, SEO-friendly, Server Actions (BFF integrado), TypeScript
+- **MariaDB**: Open-source, performance superior ao MySQL, compatibilidade
+- **OpenShift**: Kubernetes empresarial, suporte Red Hat, GitOps ready
 
 ## Modernization Initiatives
 
@@ -275,6 +327,18 @@ Para cada epic:
 
 **Áreas Afetadas**:
 - Módulos/componentes
+
+## Escala de Complexidade
+
+| Complexidade | Story Points | Duração Estimada | Descrição |
+|--------------|--------------|------------------|-----------|
+| **XS** | 1-2 | < 1 dia | Tarefas triviais, configurações simples, ajustes pontuais |
+| **S** | 3-5 | 1-2 dias | Funcionalidades simples, endpoints CRUD básicos, componentes isolados |
+| **M** | 8-13 | 3-5 dias | Funcionalidades moderadas, integrações simples, refatorações localizadas |
+| **L** | 21-34 | 1-2 semanas | Funcionalidades complexas, múltiplas integrações, refatorações estruturais |
+| **XL** | 55+ | 2-4 semanas | Funcionalidades muito complexas, sistemas completos, migrações críticas |
+
+**Nota**: Com desenvolvimento assistido por IA, espera-se redução de 30-50% na duração estimada, especialmente em tarefas de geração de código boilerplate, testes e documentação.
 
 ## User Stories
 
@@ -383,8 +447,8 @@ Você é um Engineering Manager especializado em planejamento de modernizações
 **Premissa importante**: O time utilizará ferramentas de IA (Claude Code, Cursor, etc.) para 
 acelerar codificação, testes e refatorações. Isso muda a viabilidade de algumas tarefas.
 
-Usando `architecture-context.md`, `functional-map.md` e `modernization-backlog.md`,
-gere um documento `modernization-roadmap.md` seguindo a estrutura:
+Usando `architecture-context.md`, `functional-map.md` e `modernization-backlog.md` da pasta docs,
+gere um documento `modernization-roadmap.md` na pasta docs seguindo a estrutura:
 
 # Modernization Roadmap
 
